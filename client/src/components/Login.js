@@ -11,14 +11,14 @@ const Login = (props) => {
     console.log('logging in');
     event.preventDefault();
     console.log('posting the following credentials: ', {credentials});
-    // 
+    // to retrieve a token from the server
     axios
     .post('http://localhost:5000/api/login', credentials)
     .then(response => {
         console.log('response value: ', response);
+        // to save the token to localStorage
         localStorage.setItem('token', response.data.payload);
-        console.log('props line 22: ', props);
-
+     
         // to redirect to list of friends
         props.history.push('/friendslist');
     })
