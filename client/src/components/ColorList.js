@@ -19,9 +19,24 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-    // Make a put request to save your updated color
-    // think about where will you get the id from...
-    // where is is saved right now?
+
+    console.log('saving editing:', colorToEdit)
+ 
+    axiosWithAuth()
+    .put('http://localhost:5000/api/colors/:id', colorToEdit)
+    .then(request => {
+        console.log('posted: ', request.data);
+        console.log('new list of colors: ', colors);
+
+        updateColors(colors.map(c => (
+          c.id === colorToEdit.id ? colorToEdit : c
+        )));
+      }
+        )
+
+    .catch(error => {
+        console.log('error ', error);
+    })
   };
 
   const deleteColor = color => {
@@ -32,12 +47,10 @@ const ColorList = ({ colors, updateColors }) => {
     .then(response => {
       console.log('delete response: ', response);
       updateColors(colors.filter(c => (c.id != color.id ) ));
-  
     })
     .catch(error => {
       console.log('unable to delete: ', error)
     })
-
   };
 
   return (
@@ -59,6 +72,9 @@ const ColorList = ({ colors, updateColors }) => {
           </li>
         ))}
       </ul>
+
+
+
       {editing && (
         <form onSubmit={saveEdit}>
           <legend>edit color</legend>
@@ -96,3 +112,4 @@ const ColorList = ({ colors, updateColors }) => {
 };
 
 export default ColorList;
+
