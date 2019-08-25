@@ -1,0 +1,12 @@
+1) Explain what a token is used for service authentication.
+A token is used for authorization (verifying that the access is allowed).
+
+2)  What steps can you take in your web apps to keep your data secure?
+Have a password and authentication, have control over the user input, and permissions for accessing the data.
+
+3)  Describe how web servers work.
+Web server is essentially a tool/program that allows having access to the storage of files based on the requests. 
+
+4) Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+Post/get/put/delete
