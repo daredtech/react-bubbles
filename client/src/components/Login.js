@@ -19,8 +19,8 @@ const Login = (props) => {
         // to save the token to localStorage
         localStorage.setItem('token', response.data.payload);
      
-        // to redirect to list of friends
-        props.history.push('/friendslist');
+        // to redirect to BubblePage
+        props.history.push('/bubblepage');
     })
     .catch(error => {
         console.log('error: ', error);
