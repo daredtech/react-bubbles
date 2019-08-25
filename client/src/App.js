@@ -9,6 +9,12 @@ import "./styles.scss";
 
 function App() {
   const [colorList, setColorList] = useState([]);
+
+  const removeColor = id => {
+    setColorList(colorList.filter(color => color.id != id));
+
+  }
+
   return (
     <Router>
       <div className="App">
